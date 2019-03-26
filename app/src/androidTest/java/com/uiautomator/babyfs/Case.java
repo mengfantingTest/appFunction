@@ -84,7 +84,7 @@ class Case {
         openApp("cn.babyfs.android/.home.view.SplashActivity");
         if (judgment_text("4岁以上")) {
             caseName("onBoarding");
-            clickText("4岁以上");
+            clickText("6岁以上");
             clickText("准备开始");
             assertId("cn.babyfs.android:id/ivHome");//前往首页
             clickId("cn.babyfs.android:id/ivHome");
@@ -481,7 +481,7 @@ class Case {
         assertText("上传网络诊断");
         clickText("上传日志");
         assertText("上传中...");
-        sleep(20000);
+        sleep(30000);
         assertText("日志上传成功");
         assertText("是否将信息分享到微信");
         assertText("算了");
@@ -656,7 +656,7 @@ class Case {
         openApp("cn.babyfs.android/.home.view.SplashActivity");
         clickText("学习圈");
         clickId("cn.babyfs.android:id/iv_right");
-        inputId("cn.babyfs.android:id/note_text", "宝宝玩英语");
+        inputId("cn.babyfs.android:id/note_text", "宝宝玩英语，宝宝玩英语");
         clickText("笔记主题");
         assertText("绘本");
         assertText("我娃我秀");
@@ -666,12 +666,12 @@ class Case {
         swipeDown("10");
         swipeDown("10");
         swipeDown("10");
-        assertText("宝宝玩英语");
+        assertText("宝宝玩英语，宝宝玩英语");
         clickId("cn.babyfs.android:id/flShare");
         assertText("微信");
         assertText("朋友圈");
         clickText("关闭");
-        clickId("cn.babyfs.android:id/tvComment");
+        clickId("cn.babyfs.android:id/flComment");
         inputId("cn.babyfs.android:id/editText", "厉害");
         clickText("发布");
         assertText("厉害");
@@ -681,7 +681,7 @@ class Case {
         assertText("删除");
         clickText("删除");
         clickText("删除");
-        assertTextNull("宝宝玩英语");
+        assertTextNull("宝宝玩英语，宝宝玩英语");
         closeApp("cn.babyfs.android");
     }
 
