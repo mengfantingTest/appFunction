@@ -37,37 +37,37 @@ public class RunInsideCase {
         Case.Monitor();
         KeyWord.clearData("cn.babyfs.android");//清除app数据
         Case.onBoarding();
-        Case.registered();
-        Case.login();
-        Case.logOutMonitor();
-        Case.systemMessage();
-        Case.ivScan();
-        Case.profit();
-        Case.courseRenew();
-        Case.shoppingMall();
-        Case.feedBack();
-        Case.setParent();
-        Case.setBaby();
+        Case.registered(); //手机号注册
+        Case.login(); //手机号+密码，登录
+        Case.logOutMonitor(); //移除监听器
+        Case.systemMessage(); //系统消息
+        Case.ivScan(); //扫一扫
+        Case.profit(); //分享有礼
+        Case.courseRenew(); //课程续费
+        Case.shoppingMall(); //积分兑换
+        Case.feedBack(); //常见问题与意见反馈
+        Case.setParent(); //设置-家长信息
+        Case.setBaby(); //设置-宝宝信息
         Case.accountWeChat();//发送验证码
         Case.accountPhone();//发送验证码
         Case.accountPassword();//发送验证码
-        Case.accountDevices();
-        Case.courseCard();
-        Case.collectibles();
-        Case.tapeSwitch();
-        Case.flowSwitch();
-        Case.cache();
-        Case.updateCheck();
-        Case.browserKernel();
-        Case.encourage();
-        Case.about();
-        Case.learningPage();
-        Case.courseWare();
-        Case.punch();
-        Case.menuMore();
-        Case.courseLevelSet();
-        Case.groupHome();
-        Case.groupSend();
+        Case.accountDevices(); //设置-账户安全-设备管理
+        Case.courseCard(); //设置-课程卡关联
+        Case.collectibles(); //设置-收藏
+        Case.tapeSwitch(); //设置-互动课录音自动开始
+        Case.flowSwitch(); //设置-启动2G／3G／4G流量提醒
+        Case.cache(); //设置-清除缓存
+        Case.updateCheck(); //设置-检查更新
+        Case.browserKernel(); //设置-浏览器内核
+        Case.encourage(); //设置-鼓励一下
+        Case.about(); //关于宝玩、诊断工具
+//        Case.learningPage(); //学习_学习页面
+//        Case.courseWare(); //学习_课件
+//        Case.punch(); //学习_去打卡
+//        Case.menuMore(); //学习_课件更多功能
+//        Case.courseLevelSet(); //学习_合集
+        Case.groupHome(); // 学习圈首页
+        Case.groupSend(); // 学习圈_发布笔记
 
         GenerateReport.insideCaseWriteHtml(); //写入html文件
         Email.sendFile("自动化测试报告","正文","/sdcard/测试结果.html","mft1027@163.com");//发送邮件

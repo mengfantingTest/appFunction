@@ -266,8 +266,6 @@ class Case {
         assertText("男宝");
         assertText("女宝");
         assertText("备孕");
-        assertText("333");
-        assertText("2018-09-14");
         assertText("第 1 个宝宝");
         clickText("完成");
         assertText("宝宝信息");
