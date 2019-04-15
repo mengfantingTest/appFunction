@@ -61,16 +61,16 @@ public class RunInsideCase {
         Case.browserKernel(); //设置-浏览器内核
         Case.encourage(); //设置-鼓励一下
         Case.about(); //关于宝玩、诊断工具
-//        Case.learningPage(); //学习_学习页面
-//        Case.courseWare(); //学习_课件
-//        Case.punch(); //学习_去打卡
-//        Case.menuMore(); //学习_课件更多功能
-//        Case.courseLevelSet(); //学习_合集
+        Case.learningPage(); //学习_学习页面
+        Case.courseWare(); //学习_课件
+        Case.punch(); //学习_去打卡
+        Case.menuMore(); //学习_课件更多功能
+        Case.courseLevelSet(); //学习_合集
         Case.groupHome(); // 学习圈首页
         Case.groupSend(); // 学习圈_发布笔记
 
         GenerateReport.insideCaseWriteHtml(); //写入html文件
-        Email.sendFile("自动化测试报告","正文","/sdcard/测试结果.html","mft1027@163.com");//发送邮件
+        Email.sendFile("app自动化测试报告","AndroidApp功能自动化测试","/sdcard/测试结果.html","mft1027@163.com");//发送邮件
         ProUtil.openAssignFolder("/sdcard/测试结果.html"); //打开html 文件
     }
     @Test

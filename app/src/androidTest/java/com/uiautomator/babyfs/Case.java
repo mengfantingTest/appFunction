@@ -82,10 +82,9 @@ class Case {
     //onBoarding
     static void onBoarding() throws UiObjectNotFoundException {
         openApp("cn.babyfs.android/.home.view.SplashActivity");
-        if (judgment_text("4岁以上")) {
+        if (judgment_text("6岁以上")) {
             caseName("onBoarding");
             clickText("6岁以上");
-            clickText("准备开始");
             assertId("cn.babyfs.android:id/ivHome");//前往首页
             clickId("cn.babyfs.android:id/ivHome");
             assertText("启蒙");
@@ -178,26 +177,10 @@ class Case {
         openApp("cn.babyfs.android/.home.view.SplashActivity");
         clickText("我的");
         clickText("积分兑换");
-        assertText("宝玩商城");
+        assertText("成长兔商城");
         closeApp("cn.babyfs.android");
     }
 
-//    //在线客服
-//    static void cs() throws UiObjectNotFoundException {
-//        caseName("在线客服");
-//        openApp("cn.babyfs.android/.home.view.SplashActivity");
-//        clickText("我的");
-//        clickText("在线客服");
-//        assertText("返回");
-//        assertText("宝玩小智");
-//        assertText("您好，很高兴为您服务，请问有什么可以帮您的？");
-//        inputId("cn.babyfs.android:id/sobot_et_sendmessage","自动化测试");
-//        clickId("cn.babyfs.android:id/sobot_btn_send");
-//        clickText("转人工");
-//        assertId("cn.babyfs.android:id/sobot_center_Remind_note");
-//        closeApp("cn.babyfs.android");
-//
-//    }
 
     //常见问题与意见反馈
     static void feedBack() throws UiObjectNotFoundException {
@@ -217,7 +200,7 @@ class Case {
         assertText("学习疑问");
         clickId("cn.babyfs.android:id/fd_diagnose");
         assertText("诊断工具");
-        assertText("以下功能在宝玩团队指导下使用：");
+        assertText("以下功能在成长兔英语团队指导下使用：");
         assertText("上传日志");
         assertText("上传网络诊断");
         back();
@@ -248,7 +231,7 @@ class Case {
         assertText("所在城市");
         assertText("北京市 东城区");
         clickText("地址管理");
-        assertText("宝玩商城");
+        assertText("成长兔商城");
         back();
         clickText("保存");
         assertText("家长信息");
@@ -460,23 +443,23 @@ class Case {
         closeApp("cn.babyfs.android");
     }
 
-    //关于宝玩、诊断工具
+    //关于成长兔、诊断工具
     static void about() throws UiObjectNotFoundException, InterruptedException {
-        caseName("关于宝玩");
+        caseName("关于成长兔英语");
         openApp("cn.babyfs.android/.home.view.SplashActivity");
         clickText("我的");
         clickText("设置");
-        clickText("关于宝玩");
+        clickText("关于成长兔英语");
         assertText("关于我们");
         assertText("轻松启蒙 玩转世界");
-        assertText("《宝玩用户协议》");
+        assertText("《用户协议》");
         assertText("《隐私协议》");
         assertText("北京启萌教育科技 版权所有");
         caseName("诊断工具");
         clickId("cn.babyfs.android:id/toolbar_iv_right");
         assertId("cn.babyfs.android:id/bw_tv_version");
         assertText("诊断工具");
-        assertText("以下功能在宝玩团队指导下使用：");
+        assertText("以下功能在成长兔英语团队指导下使用：");
         assertText("上传日志");
         assertText("上传网络诊断");
         clickText("上传日志");
@@ -490,7 +473,7 @@ class Case {
         openApp("cn.babyfs.android/.home.view.SplashActivity");
         clickText("我的");
         clickText("设置");
-        clickText("关于宝玩");
+        clickText("关于成长兔英语");
         clickId("cn.babyfs.android:id/toolbar_iv_right");
         clickText("上传网络诊断");
         assertText("诊断中大约1分钟...");
@@ -656,7 +639,7 @@ class Case {
         openApp("cn.babyfs.android/.home.view.SplashActivity");
         clickText("学习圈");
         clickId("cn.babyfs.android:id/iv_right");
-        inputId("cn.babyfs.android:id/note_text", "宝宝玩英语，宝宝玩英语");
+        inputId("cn.babyfs.android:id/note_text", "成长兔英语，成长兔英语");
         clickText("笔记主题");
         assertText("绘本");
         assertText("我娃我秀");
@@ -666,7 +649,7 @@ class Case {
         swipeDown("10");
         swipeDown("10");
         swipeDown("10");
-        assertText("宝宝玩英语，宝宝玩英语");
+        assertText("成长兔英语，成长兔英语");
         clickId("cn.babyfs.android:id/flShare");
         assertText("微信");
         assertText("朋友圈");
@@ -681,7 +664,7 @@ class Case {
         assertText("删除");
         clickText("删除");
         clickText("删除");
-        assertTextNull("宝宝玩英语，宝宝玩英语");
+        assertTextNull("成长兔英语，成长兔英语");
         closeApp("cn.babyfs.android");
     }
 
