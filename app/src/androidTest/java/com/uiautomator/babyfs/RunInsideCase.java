@@ -82,5 +82,10 @@ public class RunInsideCase {
     public void monkeyLogin() throws Exception {
         MonkeyTest.login();
     }
+
+    @Test
+    public void mall() throws Exception {
+        Email.sendFile("app自动化测试报告","AndroidApp功能自动化测试","/sdcard/测试结果.html","mft1027@163.com,mft1027@126.com");//发送邮件
+    }
 }
 

@@ -100,7 +100,7 @@ public class Email {
         MimeMessage msg = new MimeMessage(session);// 声明一个邮件体
         msg.setFrom(new InternetAddress("mengfanting@babyfs.cn"));//发件人
         msg.setSubject(title);//设置邮件主题
-        msg.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(to));//收件人列表
+        msg.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(to));//收件人列表,多个收件人用逗号隔开
         msg.addRecipients(Message.RecipientType.CC, "");//抄送人
 
         // 设置第一个附件

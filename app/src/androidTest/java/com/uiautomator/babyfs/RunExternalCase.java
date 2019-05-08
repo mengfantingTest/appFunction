@@ -4,6 +4,7 @@ import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.junit.After;
@@ -56,7 +57,7 @@ public class RunExternalCase {
             //按行读取txt
             str = br.readLine();
             //判断内容中包含//或者为空
-            if (str.contains("//")||str.equals("")){
+            if (str.contains("//")|| TextUtils.isEmpty(str)){
                 continue; //立刻跳转到下一次循环
             }
             //将读取到的内容，按指定字符分隔字符串

@@ -12,6 +12,7 @@ import static com.uiautomator.babyfs.KeyWord.clickText;
 import static com.uiautomator.babyfs.KeyWord.closeApp;
 import static com.uiautomator.babyfs.KeyWord.home;
 import static com.uiautomator.babyfs.KeyWord.inputId;
+import static com.uiautomator.babyfs.KeyWord.judgment_id;
 import static com.uiautomator.babyfs.KeyWord.judgment_text;
 import static com.uiautomator.babyfs.KeyWord.monitorId;
 import static com.uiautomator.babyfs.KeyWord.monitorText;
@@ -58,6 +59,11 @@ class MonkeyTest {
         monitorId("跳过", "cn.babyfs.android:id/tv_count_down");
 //打开app
         openApp("cn.babyfs.android/.home.view.SplashActivity");
+        sleep(10);
+        if (judgment_id("android:id/switch_widget")){
+            clickId("android:id/switch_widget");
+            clickId("com.android.settings:id/app_settings");
+        }
 //测试手机号+密码，登录
         clickText("我的");
         if (!judgment_text("登录/注册")) {
