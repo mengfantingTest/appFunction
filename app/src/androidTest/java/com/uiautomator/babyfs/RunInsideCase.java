@@ -2,11 +2,16 @@ package com.uiautomator.babyfs;
 
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
+import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.util.Log;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
+
+import javax.mail.MessagingException;
 
 import static com.uiautomator.babyfs.Constants.Path_picture;
 import static com.uiautomator.babyfs.Constants.TAG;
@@ -22,25 +27,25 @@ public class RunInsideCase {
         KeyWord.context = KeyWord.instrumentation.getContext();
         //删除picture文件夹
         KeyWord.deletePath(Path_picture);
+        Log.e(TAG, "开始执行case");
     }
 
 
     @After
-    public void after() {
+    public void after() throws Exception {
+        GenerateReport.insideCaseWriteHtml(); //写入html文件
+        Email.sendFile("app自动化测试报告","AndroidApp功能自动化测试","/sdcard/测试结果.html","mft1027@163.com");//发送邮件
+        ProUtil.openAssignFolder("/sdcard/测试结果.html"); //打开html 文件
         Log.e(TAG, "测试结束");
     }
 
 
     @Test
     public void app() throws Exception {
-        Log.e(TAG, "开始执行内部case");
         Case.Monitor();
-        Case.logOutMonitor(); //移除监听器
-        Case.profit(); //分享有礼
+//        Case.profit(); //分享有礼
         Case.feedBack(); //常见问题与意见反馈
-        GenerateReport.insideCaseWriteHtml(); //写入html文件
-        Email.sendFile("app自动化测试报告","AndroidApp功能自动化测试","/sdcard/测试结果.html","mft1027@163.com");//发送邮件
-        ProUtil.openAssignFolder("/sdcard/测试结果.html"); //打开html 文件
+        Case.logOutMonitor(); //移除监听器
     }
 
 }
