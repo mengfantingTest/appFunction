@@ -43,8 +43,8 @@ public class RunInsideCase {
     @Test
     public void app() throws Exception {
         Case.Monitor();
-//        Case.profit(); //分享有礼
-        Case.feedBack(); //常见问题与意见反馈
+        Case.profit(); //分享有礼
+//        Case.feedBack(); //常见问题与意见反馈
         Case.logOutMonitor(); //移除监听器
     }
 
