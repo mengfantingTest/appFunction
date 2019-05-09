@@ -92,6 +92,36 @@ class Case {
         assertText("分享有礼");
     }
 
+    //常见问题与意见反馈
+    static void feedBack() throws UiObjectNotFoundException {
+        caseName("常见问题与意见反馈");
+        closeApp("cn.babyfs.android");
+        openApp("cn.babyfs.android/.home.view.SplashActivity");
+        clickText("我的");
+        clickText("常见问题与意见反馈");
+        assertText("常见问题");
+        clickId("cn.babyfs.android:id/toolbar_tv_right");
+        assertText("我的反馈");
+        assertText("自动化测试，自动化测试");
+        clickText("写反馈");
+        assertText("提交反馈");
+        assertText("功能异常");
+        assertText("APP使用");
+        assertText("优化建议");
+        assertText("学习疑问");
+        clickId("cn.babyfs.android:id/fd_diagnose");
+        assertText("诊断工具");
+        assertText("以下功能在成长兔英语团队指导下使用：");
+        assertText("上传日志");
+        assertText("上传网络诊断");
+        back();
+        inputId("cn.babyfs.android:id/fd_desc", "自动化测试，自动化测试");
+        clickText("提交");
+        assertText("我的反馈");
+        swipeDown("10");
+        assertText("自动化测试，自动化测试");
+    }
+
 
 
 }
