@@ -36,7 +36,7 @@ public class RunInsideCase {
         Log.e(TAG, "开始执行内部case");
         Case.Monitor();
         Case.logOutMonitor(); //移除监听器
-        Case.profit(); //分享有礼
+//        Case.profit(); //分享有礼
         Case.feedBack(); //常见问题与意见反馈
         GenerateReport.insideCaseWriteHtml(); //写入html文件
         Email.sendFile("app自动化测试报告","AndroidApp功能自动化测试","/sdcard/测试结果.html","mft1027@163.com");//发送邮件
