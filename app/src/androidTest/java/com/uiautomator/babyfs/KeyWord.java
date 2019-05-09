@@ -257,7 +257,7 @@ public class KeyWord {
                 contentPass("点击text","clickText", name, "");
             } else {
                 screenShot("点击text失败");
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 Log.e(TAG, "点击text: " + name + " 失败");
                 contentFail("点击text","clickText", name, "");
 
@@ -284,7 +284,7 @@ public class KeyWord {
                 contentPass("点击id","clickId", name, "");
             } else {
                 screenShot("点击id失败");
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 Log.e(TAG, "点击id: " + name + " 失败");
                 contentFail("点击id","clickId", name, "");
 
@@ -308,7 +308,7 @@ public class KeyWord {
                 contentPass("text断言","assertText", name, "");
             } else {
                 screenShot("text断言失败: " + name);
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 contentFail("text断言","assertText", name, "");
 
             }
@@ -324,7 +324,7 @@ public class KeyWord {
             contentPass("text断言","assertTextNull", name, "");
         } else {
             screenShot("text断言失败: " + name);
-            RunExternalCase.judge = "fail";
+//            RunExternalCase.judge = "fail";
             contentFail("text断言","assertTextNull", name, "");
 
         }
@@ -347,7 +347,7 @@ public class KeyWord {
                 contentPass("id断言","assertId", name, "");
             } else {
                 screenShot("id断言失败");
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 Log.e(TAG, "id断言失败: " + name);
                 contentFail("id断言","assertId", name, "");
 
@@ -364,7 +364,7 @@ public class KeyWord {
             contentPass("id断言","assertIdNull", name, "");
         } else {
             screenShot("id断言失败: " + name);
-            RunExternalCase.judge = "fail";
+//            RunExternalCase.judge = "fail";
             contentFail("id断言","assertIdNull", name, "");
 
         }
@@ -389,7 +389,7 @@ public class KeyWord {
                 contentPass("输入","inputId", name1, name2);
             } else {
                 screenShot("id输入失败");
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 Log.e(TAG, "输入失败: " + name2);
                 contentFail("输入","inputId", name1, name2);
             }
@@ -416,7 +416,7 @@ public class KeyWord {
                 contentPass("输入","inputText", name1, name2);
             } else {
                 screenShot("text输入失败");
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 Log.e(TAG, "输入失败: " + name2);
                 contentFail("输入","inputText", name1, name2);
 
@@ -443,7 +443,7 @@ public class KeyWord {
                 contentPass("清空输入框","cleraId", name1, "");
             } else {
                 screenShot("id清空输入框失败");
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 Log.e(TAG, "清空输入框失败: " + name1);
                 contentFail("清空输入框","cleraId", name1, "");
 
@@ -470,7 +470,7 @@ public class KeyWord {
                 contentPass("清空输入框","cleraText", name1, "");
             } else {
                 screenShot("text清空输入框失败");
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 Log.e(TAG, "清空输入框失败: " + name1);
                 contentFail("清空输入框","cleraText", name1, "");
             }
@@ -557,7 +557,7 @@ public class KeyWord {
             Log.e(TAG, "找到了text：" + string);
             contentPass("滚动屏幕找到指定text","slideFindText", string, "");
         } else {
-            RunExternalCase.judge = "fail";
+//            RunExternalCase.judge = "fail";
             Log.e(TAG, "没找到text：" + string);
             contentFail("滚动屏幕找到指定text","slideFindText", string, "");
 
@@ -574,7 +574,7 @@ public class KeyWord {
             Log.e(TAG, "找到了id：" + string);
             contentPass("滚动屏幕找到指定id","slideFindId", string, "");
         } else {
-            RunExternalCase.judge = "fail";
+//            RunExternalCase.judge = "fail";
             Log.e(TAG, "没找到id：" + string);
             contentFail("滚动屏幕找到指定id","slideFindId", string, "");
         }
@@ -597,7 +597,7 @@ public class KeyWord {
                 Log.e(TAG, "长按text: " + name + " 成功");
                 contentPass("长按text","clickTextLong", name, "");
             } else {
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 Log.e(TAG, "长按text: " + name + " 失败");
                 contentFail("长按text","clickTextLong", name, "");
             }
@@ -621,7 +621,7 @@ public class KeyWord {
                 Log.e(TAG, "长按id: " + name + " 成功");
                 contentPass("长按id","clickIdLong", name, "");
             } else {
-                RunExternalCase.judge = "fail";
+//                RunExternalCase.judge = "fail";
                 Log.e(TAG, "长按id: " + name + " 失败");
                 contentFail("长按id","clickIdLong", name, "");
             }
@@ -660,7 +660,7 @@ public class KeyWord {
             contentPass("点击后，选中状态变化","selectedId", name, "");
         } else {
             contentFail("点击后，选中状态变化","selectedId", name, "");
-            RunExternalCase.judge = "fail";
+//            RunExternalCase.judge = "fail";
         }
     }
 
