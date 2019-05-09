@@ -20,7 +20,7 @@ public class Constants {
     static final String layout = "android.widget.LinearLayout";
 
     //log标签
-    static final String TAG = "自动化测试";
+    static final String TAG = "uiautomatorTest";
 
     //注册用手机号
     static final String registeredPhone = "18281094167";
