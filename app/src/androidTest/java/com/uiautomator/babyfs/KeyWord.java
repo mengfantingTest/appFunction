@@ -176,7 +176,7 @@ public class KeyWord {
         if (!file.exists()) {
             file.mkdir();
         }
-        mDevice.takeScreenshot(new File(Path_picture + "断言失败" + ".png"));
+        mDevice.takeScreenshot(new File(Path_picture + name + ".png"));
         Log.e(TAG, "截图成功");
     }
 
