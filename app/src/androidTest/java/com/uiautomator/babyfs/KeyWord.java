@@ -41,22 +41,33 @@ public class KeyWord {
 
     private static int waitTime = 20 * 1000;
 
+    //调用shell命令
+    public static void shell(String string) {
+        try {
+            mDevice.executeShellCommand(string);//执行一个shell命令，需要5.0以上手机
+            Log.e(Constants.TAG, "调用shell命令成功" + string);
+        } catch (IOException e) {
+            Log.e(Constants.TAG, "调用shell命令失败" + string);
+            e.printStackTrace();
+        }
+    }
+
     //启动宝玩app2，通过命令启动
     public static void openApp(String string) {
         try {
             mDevice.executeShellCommand("am start -n " + string);//执行一个shell命令，需要5.0以上手机
             Log.e(Constants.TAG, "启动app成功");
             mDevice.wait(Until.hasObject(By.pkg(string).depth(0)), 20);
-            contentPass("启动app","openApp", string, "");
+            contentPass("启动app", "openApp", string, "");
         } catch (IOException e) {
-            contentFail("启动app","openApp", string, "");
+            contentFail("启动app", "openApp", string, "");
             Log.e(Constants.TAG, "openapp: 打开app失败");
             e.printStackTrace();
         }
     }
 
     //启动宝玩app,部分版本的手机无法启动
-    public static void openApp2(String string){
+    public static void openApp2(String string) {
         Log.e(TAG, "启动app");
         Intent intent = context.getPackageManager().getLaunchIntentForPackage(string);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -73,9 +84,9 @@ public class KeyWord {
             sleep(2000);
             mDevice.executeShellCommand("am force-stop " + string);
             Log.e(TAG, "关闭app成功");
-            contentPass("关闭app","closeApp", string, "");
+            contentPass("关闭app", "closeApp", string, "");
         } catch (IOException e) {
-            contentFail("关闭app","closeApp", string, "");
+            contentFail("关闭app", "closeApp", string, "");
             Log.e(TAG, "关闭app失败");
             e.printStackTrace();
         }
@@ -86,9 +97,9 @@ public class KeyWord {
         try {
             mDevice.executeShellCommand("pm clear " + string);
             Log.e(TAG, "清除app的数据和缓存成功");
-            contentPass("清除app的数据和缓存","clearData", string, "");
+            contentPass("清除app的数据和缓存", "clearData", string, "");
         } catch (IOException e) {
-            contentFail("清除app的数据和缓存","clearData", string, "");
+            contentFail("清除app的数据和缓存", "clearData", string, "");
             e.printStackTrace();
             Log.e(TAG, "清除app的数据和缓存失败");
         }
@@ -151,9 +162,9 @@ public class KeyWord {
         if (!mDevice.isScreenOn()) {  //唤醒屏幕
             mDevice.wakeUp();
             Log.e(TAG, "唤醒屏幕成功");
-            contentPass("唤醒屏幕","wakeScreen", "", "");
+            contentPass("唤醒屏幕", "wakeScreen", "", "");
         } else {
-            contentFail("唤醒屏幕","wakeScreen", "", "");
+            contentFail("唤醒屏幕", "wakeScreen", "", "");
             Log.e(TAG, "手机处于亮屏状态");
         }
     }
@@ -162,7 +173,7 @@ public class KeyWord {
     //截图
     public static void screenShot(String name) {
         File file = new File(Path_picture);
-        if (!file.exists()){
+        if (!file.exists()) {
             file.mkdir();
         }
         mDevice.takeScreenshot(new File(Path_picture + name + ".png"));
@@ -181,9 +192,9 @@ public class KeyWord {
     }
 
     // 删除文件夹和里面的文件
-    public static void deletePath(String string){
+    public static void deletePath(String string) {
         File file = new File(string);
-        if (file.exists()){
+        if (file.exists()) {
             deleteFile(file);
         }
 
@@ -197,14 +208,12 @@ public class KeyWord {
                 deleteFile(f);
             }
 //            file.delete();//保留文件夹，只删除里面的文件
-            Log.e(TAG, "deleteFile: 删除文件夹成功："+ file);
+            Log.e(TAG, "deleteFile: 删除文件夹成功：" + file);
         } else if (file.exists()) {
             file.delete();
-            Log.e(TAG, "deleteFile: 删除文件成功："+ file);
+            Log.e(TAG, "deleteFile: 删除文件成功：" + file);
         }
     }
-
-
 
 
     //安装apk,传入路径
@@ -214,9 +223,9 @@ public class KeyWord {
             mDevice.executeShellCommand("pm install -t -r -d " + string);//-t 允许测试apk被安装 -r 重新安装应用，且保留应用数据 -d 允许降级安装（同一应用低级换高级）
             Log.e(TAG, "安装成功app：" + string);
             sleep(2000);
-            contentPass("安装app","installApk", string, "");
+            contentPass("安装app", "installApk", string, "");
         } catch (IOException e) {
-            contentFail("安装app","installApk", string, "");
+            contentFail("安装app", "installApk", string, "");
             e.printStackTrace();
         }
     }
@@ -228,9 +237,9 @@ public class KeyWord {
                 Log.e(TAG, "开始卸载app：" + string);
                 mDevice.executeShellCommand("pm uninstall " + string);
                 Log.e(TAG, "卸载成功app：" + string);
-                contentPass("卸载app","unInstallApk", string, "");
+                contentPass("卸载app", "unInstallApk", string, "");
             } catch (IOException e) {
-                contentFail("卸载app","unInstallApk", string, "");
+                contentFail("卸载app", "unInstallApk", string, "");
                 e.printStackTrace();
             }
         } else {
@@ -246,7 +255,7 @@ public class KeyWord {
         if (x != null) {
             x.click();
             Log.e(TAG, "点击text: " + name + " 成功");
-            contentPass("点击text","clickText", name, "");
+            contentPass("点击text", "clickText", name, "");
         } else {
             Log.e(TAG, "没找到: " + name + " 开始滚动屏幕查找");
             slideFindText(name);
@@ -254,12 +263,12 @@ public class KeyWord {
             if (y != null) {
                 y.click();
                 Log.e(TAG, "点击text: " + name + " 成功");
-                contentPass("点击text","clickText", name, "");
+                contentPass("点击text", "clickText", name, "");
             } else {
                 screenShot("点击text失败");
 //                RunExternalCase.judge = "fail";
                 Log.e(TAG, "点击text: " + name + " 失败");
-                contentFail("点击text","clickText", name, "");
+                contentFail("点击text", "clickText", name, "");
 
             }
         }
@@ -273,7 +282,7 @@ public class KeyWord {
         if (x != null) {
             x.click();
             Log.e(TAG, "点击id: " + name + " 成功");
-            contentPass("点击id","clickId", name, "");
+            contentPass("点击id", "clickId", name, "");
         } else {
             Log.e(TAG, "没找到: " + name + " 开始滚动屏幕查找");
             slideFindId(name);
@@ -281,12 +290,12 @@ public class KeyWord {
             if (y != null) {
                 y.click();
                 Log.e(TAG, "点击id: " + name + " 成功");
-                contentPass("点击id","clickId", name, "");
+                contentPass("点击id", "clickId", name, "");
             } else {
                 screenShot("点击id失败");
 //                RunExternalCase.judge = "fail";
                 Log.e(TAG, "点击id: " + name + " 失败");
-                contentFail("点击id","clickId", name, "");
+                contentFail("点击id", "clickId", name, "");
 
             }
         }
@@ -298,18 +307,18 @@ public class KeyWord {
         UiObject2 x = mDevice.findObject(By.text(name));
         if (x != null) {
             Log.e(TAG, "text断言成功: " + name);
-            contentPass("text断言","assertText", name, "");
+            contentPass("text断言", "assertText", name, "");
         } else {
             Log.e(TAG, "没找到: " + name + " 开始滚动屏幕查找");
             slideFindText(name);
             UiObject2 y = mDevice.findObject(By.text(name));
             if (y != null) {
                 Log.e(TAG, "text断言成功: " + name);
-                contentPass("text断言","assertText", name, "");
+                contentPass("text断言", "assertText", name, "");
             } else {
                 screenShot("text断言失败: " + name);
 //                RunExternalCase.judge = "fail";
-                contentFail("text断言","assertText", name, "");
+                contentFail("text断言", "assertText", name, "");
 
             }
         }
@@ -321,11 +330,11 @@ public class KeyWord {
         UiObject2 x = mDevice.findObject(By.text(name));
         if (x == null) {
             Log.e(TAG, "text断言成功: " + name);
-            contentPass("text断言","assertTextNull", name, "");
+            contentPass("text断言", "assertTextNull", name, "");
         } else {
             screenShot("text断言失败: " + name);
 //            RunExternalCase.judge = "fail";
-            contentFail("text断言","assertTextNull", name, "");
+            contentFail("text断言", "assertTextNull", name, "");
 
         }
     }
@@ -337,19 +346,19 @@ public class KeyWord {
         UiObject2 x = mDevice.findObject(By.res(name));
         if (x != null) {
             Log.e(TAG, "id断言成功: " + name);
-            contentPass("id断言","assertId", name, "");
+            contentPass("id断言", "assertId", name, "");
         } else {
             Log.e(TAG, "没找到: " + name + " 开始滚动屏幕查找");
             slideFindId(name);
             UiObject2 y = mDevice.findObject(By.res(name));
             if (y != null) {
                 Log.e(TAG, "id断言成功: " + name);
-                contentPass("id断言","assertId", name, "");
+                contentPass("id断言", "assertId", name, "");
             } else {
                 screenShot("id断言失败");
 //                RunExternalCase.judge = "fail";
                 Log.e(TAG, "id断言失败: " + name);
-                contentFail("id断言","assertId", name, "");
+                contentFail("id断言", "assertId", name, "");
 
             }
         }
@@ -361,11 +370,11 @@ public class KeyWord {
         UiObject2 x = mDevice.findObject(By.res(name));
         if (x == null) {
             Log.e(TAG, "id断言成功: " + name);
-            contentPass("id断言","assertIdNull", name, "");
+            contentPass("id断言", "assertIdNull", name, "");
         } else {
             screenShot("id断言失败: " + name);
 //            RunExternalCase.judge = "fail";
-            contentFail("id断言","assertIdNull", name, "");
+            contentFail("id断言", "assertIdNull", name, "");
 
         }
     }
@@ -378,7 +387,7 @@ public class KeyWord {
         if (x != null) {
             x.setText(name2);
             Log.e(TAG, "输入成功: " + name2);
-            contentPass("输入","inputId", name1, name2);
+            contentPass("输入", "inputId", name1, name2);
         } else {
             Log.e(TAG, "没找到: " + name1 + " 开始滚动屏幕查找");
             slideFindId(name1);
@@ -386,12 +395,12 @@ public class KeyWord {
             if (y != null) {
                 y.setText(name2);
                 Log.e(TAG, "输入成功: " + name2);
-                contentPass("输入","inputId", name1, name2);
+                contentPass("输入", "inputId", name1, name2);
             } else {
                 screenShot("id输入失败");
 //                RunExternalCase.judge = "fail";
                 Log.e(TAG, "输入失败: " + name2);
-                contentFail("输入","inputId", name1, name2);
+                contentFail("输入", "inputId", name1, name2);
             }
 
         }
@@ -405,7 +414,7 @@ public class KeyWord {
         if (x != null) {
             x.setText(name2);
             Log.e(TAG, "输入成功: " + name2);
-            contentPass("输入","inputText", name1, name2);
+            contentPass("输入", "inputText", name1, name2);
         } else {
             Log.e(TAG, "没找到: " + name1 + " 开始滚动屏幕查找");
             slideFindText(name1);
@@ -413,12 +422,12 @@ public class KeyWord {
             if (y != null) {
                 y.setText(name2);
                 Log.e(TAG, "输入成功: " + name2);
-                contentPass("输入","inputText", name1, name2);
+                contentPass("输入", "inputText", name1, name2);
             } else {
                 screenShot("text输入失败");
 //                RunExternalCase.judge = "fail";
                 Log.e(TAG, "输入失败: " + name2);
-                contentFail("输入","inputText", name1, name2);
+                contentFail("输入", "inputText", name1, name2);
 
             }
         }
@@ -432,7 +441,7 @@ public class KeyWord {
         if (x != null) {
             x.clear();//清空输入框
             Log.e(TAG, "清空输入框成功: " + name1);
-            contentPass("清空输入框","cleraId", name1, "");
+            contentPass("清空输入框", "cleraId", name1, "");
         } else {
             Log.e(TAG, "没找到: " + name1 + " 开始滚动屏幕查找");
             slideFindId(name1);
@@ -440,12 +449,12 @@ public class KeyWord {
             if (y != null) {
                 y.clear();//清空输入框
                 Log.e(TAG, "清空输入框成功: " + name1);
-                contentPass("清空输入框","cleraId", name1, "");
+                contentPass("清空输入框", "cleraId", name1, "");
             } else {
                 screenShot("id清空输入框失败");
 //                RunExternalCase.judge = "fail";
                 Log.e(TAG, "清空输入框失败: " + name1);
-                contentFail("清空输入框","cleraId", name1, "");
+                contentFail("清空输入框", "cleraId", name1, "");
 
             }
         }
@@ -459,7 +468,7 @@ public class KeyWord {
         if (x != null) {
             x.clear();//清空输入框
             Log.e(TAG, "清空输入框成功: " + name1);
-            contentPass("清空输入框","cleraText", name1, "");
+            contentPass("清空输入框", "cleraText", name1, "");
         } else {
             Log.e(TAG, "没找到: " + name1 + " 开始滚动屏幕查找");
             slideFindText(name1);
@@ -467,12 +476,12 @@ public class KeyWord {
             if (y != null) {
                 y.clear();//清空输入框
                 Log.e(TAG, "清空输入框成功: " + name1);
-                contentPass("清空输入框","cleraText", name1, "");
+                contentPass("清空输入框", "cleraText", name1, "");
             } else {
                 screenShot("text清空输入框失败");
 //                RunExternalCase.judge = "fail";
                 Log.e(TAG, "清空输入框失败: " + name1);
-                contentFail("清空输入框","cleraText", name1, "");
+                contentFail("清空输入框", "cleraText", name1, "");
             }
         }
     }
@@ -555,11 +564,11 @@ public class KeyWord {
         boolean text = scroll.scrollIntoView(new UiSelector().text(string));//滚动到某个对象，scrollIntoView里面的对象只能是UiObject或UiSelector
         if (text) {
             Log.e(TAG, "找到了text：" + string);
-            contentPass("滚动屏幕找到指定text","slideFindText", string, "");
+            contentPass("滚动屏幕找到指定text", "slideFindText", string, "");
         } else {
 //            RunExternalCase.judge = "fail";
             Log.e(TAG, "没找到text：" + string);
-            contentFail("滚动屏幕找到指定text","slideFindText", string, "");
+            contentFail("滚动屏幕找到指定text", "slideFindText", string, "");
 
         }
     }
@@ -572,11 +581,11 @@ public class KeyWord {
         boolean id = scroll.scrollIntoView(new UiSelector().resourceId(string));//滚动到某个对象，scrollIntoView里面的对象只能是UiObject或UiSelector
         if (id) {
             Log.e(TAG, "找到了id：" + string);
-            contentPass("滚动屏幕找到指定id","slideFindId", string, "");
+            contentPass("滚动屏幕找到指定id", "slideFindId", string, "");
         } else {
 //            RunExternalCase.judge = "fail";
             Log.e(TAG, "没找到id：" + string);
-            contentFail("滚动屏幕找到指定id","slideFindId", string, "");
+            contentFail("滚动屏幕找到指定id", "slideFindId", string, "");
         }
     }
 
@@ -587,7 +596,7 @@ public class KeyWord {
         if (x != null) {
             x.longClick();
             Log.e(TAG, "长按text: " + name + " 成功");
-            contentPass("长按text","clickTextLong", name, "");
+            contentPass("长按text", "clickTextLong", name, "");
         } else {
             Log.e(TAG, "没找到: " + name + " 开始滚动屏幕查找");
             slideFindText(name);
@@ -595,11 +604,11 @@ public class KeyWord {
             if (y != null) {
                 y.longClick();
                 Log.e(TAG, "长按text: " + name + " 成功");
-                contentPass("长按text","clickTextLong", name, "");
+                contentPass("长按text", "clickTextLong", name, "");
             } else {
 //                RunExternalCase.judge = "fail";
                 Log.e(TAG, "长按text: " + name + " 失败");
-                contentFail("长按text","clickTextLong", name, "");
+                contentFail("长按text", "clickTextLong", name, "");
             }
         }
     }
@@ -611,7 +620,7 @@ public class KeyWord {
         if (x != null) {
             x.longClick();
             Log.e(TAG, "长按id: " + name + " 成功");
-            contentPass("长按id","clickIdLong", name, "");
+            contentPass("长按id", "clickIdLong", name, "");
         } else {
             Log.e(TAG, "没找到: " + name + " 开始滚动屏幕查找");
             slideFindId(name);
@@ -619,11 +628,11 @@ public class KeyWord {
             if (y != null) {
                 y.longClick();
                 Log.e(TAG, "长按id: " + name + " 成功");
-                contentPass("长按id","clickIdLong", name, "");
+                contentPass("长按id", "clickIdLong", name, "");
             } else {
 //                RunExternalCase.judge = "fail";
                 Log.e(TAG, "长按id: " + name + " 失败");
-                contentFail("长按id","clickIdLong", name, "");
+                contentFail("长按id", "clickIdLong", name, "");
             }
         }
     }
@@ -657,42 +666,41 @@ public class KeyWord {
         boolean ob1 = x1.isSelected();
         Log.e(TAG, "id: " + name + " 选中状态：" + ob1);
         if (ob != ob1) {
-            contentPass("点击后，选中状态变化","selectedId", name, "");
+            contentPass("点击后，选中状态变化", "selectedId", name, "");
         } else {
-            contentFail("点击后，选中状态变化","selectedId", name, "");
+            contentFail("点击后，选中状态变化", "selectedId", name, "");
 //            RunExternalCase.judge = "fail";
         }
     }
 
     //断言，id为选中状态
-    public static void selectedIdTrue(String name){
+    public static void selectedIdTrue(String name) {
         sleep(2000);
         mDevice.wait(Until.findObject(By.res(name)), waitTime);
         UiObject2 x = mDevice.findObject(By.res(name));
         boolean ob = x.isSelected();
         Log.e(TAG, "id: " + name + " 选中状态：" + ob);
-        if (ob){
-            contentPass("检查按钮选中状态","selectedIdTrue", name, "");
-        }else {
-            contentFail("检查按钮选中状态","selectedIdTrue", name, "");
+        if (ob) {
+            contentPass("检查按钮选中状态", "selectedIdTrue", name, "");
+        } else {
+            contentFail("检查按钮选中状态", "selectedIdTrue", name, "");
         }
 
     }
 
     //断言，id为非选中状态
-    public static void selectedIdFalse(String name){
+    public static void selectedIdFalse(String name) {
         sleep(2000);
         mDevice.wait(Until.findObject(By.res(name)), waitTime);
         UiObject2 x = mDevice.findObject(By.res(name));
         boolean ob = x.isSelected();
         Log.e(TAG, "id: " + name + " 选中状态：" + ob);
-        if (!ob){
-            contentPass("检查按钮选中状态","selectedIdFalse", name, "");
-        }else {
-            contentFail("检查按钮选中状态","selectedIdFalse", name, "");
+        if (!ob) {
+            contentPass("检查按钮选中状态", "selectedIdFalse", name, "");
+        } else {
+            contentFail("检查按钮选中状态", "selectedIdFalse", name, "");
         }
     }
-
 
 
     //////////////////////////////////////////////////////////////////////////////内部方法

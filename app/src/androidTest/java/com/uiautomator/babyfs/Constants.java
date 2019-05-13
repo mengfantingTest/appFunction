@@ -11,7 +11,7 @@ public class Constants {
     //报告路径
     static final String Path_html = "/sdcard/测试结果.html";
     //截图文件夹路径
-    static final String Path_picture = "/sdcard/AU_picture/";
+    static final String Path_picture = "/sdcard/appFunctionPicture/";
 
 
     //布局classname

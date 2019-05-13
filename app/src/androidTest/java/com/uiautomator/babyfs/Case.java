@@ -89,7 +89,7 @@ class Case {
         openApp("cn.babyfs.android/.home.view.SplashActivity");
         clickText("我的");
         clickText("分享有礼");
-        assertText("分享有礼");
+        assertText("分享有礼1");
     }
 
     //常见问题与意见反馈
