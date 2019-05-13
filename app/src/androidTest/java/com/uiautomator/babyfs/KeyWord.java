@@ -316,7 +316,7 @@ public class KeyWord {
                 Log.e(TAG, "text断言成功: " + name);
                 contentPass("text断言", "assertText", name, "");
             } else {
-                screenShot("text断言失败: " + name);
+                screenShot("text断言失败-" + name);
 //                RunExternalCase.judge = "fail";
                 contentFail("text断言", "assertText", name, "");
 
@@ -332,7 +332,7 @@ public class KeyWord {
             Log.e(TAG, "text断言成功: " + name);
             contentPass("text断言", "assertTextNull", name, "");
         } else {
-            screenShot("text断言失败: " + name);
+            screenShot("text断言失败-" + name);
 //            RunExternalCase.judge = "fail";
             contentFail("text断言", "assertTextNull", name, "");
 
@@ -357,7 +357,7 @@ public class KeyWord {
             } else {
                 screenShot("id断言失败");
 //                RunExternalCase.judge = "fail";
-                Log.e(TAG, "id断言失败: " + name);
+                Log.e(TAG, "id断言失败-" + name);
                 contentFail("id断言", "assertId", name, "");
 
             }
@@ -372,7 +372,7 @@ public class KeyWord {
             Log.e(TAG, "id断言成功: " + name);
             contentPass("id断言", "assertIdNull", name, "");
         } else {
-            screenShot("id断言失败: " + name);
+            screenShot("id断言失败-" + name);
 //            RunExternalCase.judge = "fail";
             contentFail("id断言", "assertIdNull", name, "");
 
