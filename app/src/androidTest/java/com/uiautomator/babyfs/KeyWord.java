@@ -301,6 +301,14 @@ public class KeyWord {
         }
     }
 
+    //点击坐标
+    public static void clickCoordinate(int x, int y) {
+        sleep(2);
+        mDevice.click(x, y);
+        Log.e(TAG, "点击坐标" + x + "," + y);
+        sleep(2);
+    }
+
     //断言text存在
     public static void assertText(String name) throws UiObjectNotFoundException {
         mDevice.wait(Until.findObject(By.text(name)), waitTime);
@@ -700,6 +708,13 @@ public class KeyWord {
         } else {
             contentFail("检查按钮选中状态", "selectedIdFalse", name, "");
         }
+    }
+
+    //调用keyevent键值
+    public static void inputKeyevent(int number) {
+        sleep(2);
+        mDevice.pressKeyCode(number, 0); //metaState参数：组合键，0未激活，1caps SHIFT或CAPS_LOCK被激活，2fn ALT被激活，3caps_fn ALT,SHIFT或CAPS_LOCK同时被激活
+        Log.e(TAG, "输入键值" + number);
     }
 
 
