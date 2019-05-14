@@ -25,8 +25,7 @@ public class RunInsideCase {
         KeyWord.instrumentation = InstrumentationRegistry.getInstrumentation();
         KeyWord.mDevice = UiDevice.getInstance(KeyWord.instrumentation);
         KeyWord.context = KeyWord.instrumentation.getContext();
-        //删除picture文件夹
-        KeyWord.deletePath(Path_picture);
+        KeyWord.newFolder(Path_picture);
         Log.e(TAG, "开始执行case");
     }
 

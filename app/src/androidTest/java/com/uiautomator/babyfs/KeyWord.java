@@ -183,8 +183,8 @@ public class KeyWord {
     //在sdcard上，删除、新建文件夹
     public static void newFolder(String name) {
         try {
-            mDevice.executeShellCommand("rm -r /mnt/sdcard/" + name);
-            mDevice.executeShellCommand("mkdir mnt/sdcard/" + name);
+            mDevice.executeShellCommand("rm -r " + name);
+            mDevice.executeShellCommand("mkdir " + name);
         } catch (IOException e) {
             e.printStackTrace();
         }
