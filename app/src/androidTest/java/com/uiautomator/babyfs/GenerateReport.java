@@ -22,11 +22,9 @@ public class GenerateReport {
             +"</tr>";
 
 
-    //写入html
     static void writeHtml() throws IOException {
-        // 写入html文件
         testresult_table += "</table> </body></html>";
-        File file3 = new File(Path_html);// html文件路径
+        File file3 = new File(Path_html);
         OutputStreamWriter os3;
         os3 = new OutputStreamWriter(new FileOutputStream(file3));
         os3.write(testresult_table);
@@ -38,7 +36,7 @@ public class GenerateReport {
 
 
 
-    //用于打印内部用例测试结果
+
 
      public static String insideCaseSultTable="<html>"
             +"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />" //使用 build fat jar打包后，出现中文乱码，用此行代码解决，指定html编码格式
@@ -86,11 +84,9 @@ public class GenerateReport {
                 + "<td align=\"center\"  bgcolor=\"#CDAA7D\">" + "" + "</td>" + "</tr>";
     }
 
-    //写入html
     static void insideCaseWriteHtml() throws IOException {
-        // 写入html文件
         insideCaseSultTable += "</table> </body></html>";
-        File file3 = new File(Path_html);// html文件路径
+        File file3 = new File(Path_html);
         OutputStreamWriter os3;
         os3 = new OutputStreamWriter(new FileOutputStream(file3));
         os3.write(insideCaseSultTable);

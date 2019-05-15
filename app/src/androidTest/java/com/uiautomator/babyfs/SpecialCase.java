@@ -93,9 +93,5 @@ public class SpecialCase {
         }
     }
 
-    public static void h5() throws UiObjectNotFoundException {
-//        clickText("组合商品名称1556164264471");
-        clickText("使用支付宝App支付");
-    }
 
 }

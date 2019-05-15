@@ -79,10 +79,10 @@ public class ProUtil {
     public static String load(String filePath) {
         StringBuilder result = new StringBuilder();
         try {
-            BufferedReader br = new BufferedReader(new FileReader(filePath));//构造一个BufferedReader类来读取文件
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
             String s;
-            while ((s = br.readLine()) != null) {//使用readLine方法，一次读一行
-                result.append(System.lineSeparator()).append(s);//换行+内容
+            while ((s = br.readLine()) != null) {
+                result.append(System.lineSeparator()).append(s);
             }
             br.close();
         } catch (Exception e) {

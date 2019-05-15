@@ -152,7 +152,7 @@ public class KeyWord {
 
     //移除监听器
     public static void removeMonitor(String MonitorName) {
-        mDevice.removeWatcher(MonitorName);//移除名称为"MonitorName"的监听器
+        mDevice.removeWatcher(MonitorName);
         Log.e(TAG, "监听器移除成功: " + MonitorName);
 
     }
@@ -220,7 +220,7 @@ public class KeyWord {
     public static void installApk(String string) {
         try {
             Log.e(TAG, "开始安装app：" + string);
-            mDevice.executeShellCommand("pm install -t -r -d " + string);//-t 允许测试apk被安装 -r 重新安装应用，且保留应用数据 -d 允许降级安装（同一应用低级换高级）
+            mDevice.executeShellCommand("pm install -t -r -d " + string);
             Log.e(TAG, "安装成功app：" + string);
             sleep(2000);
             contentPass("安装app", "installApk", string, "");
@@ -498,10 +498,10 @@ public class KeyWord {
     public static void swipeLeft(String time) {
         sleep(1000);
 
-        int x = mDevice.getDisplayWidth();//获取屏幕的宽
-        int y = mDevice.getDisplayHeight();//获取屏幕的高
+        int x = mDevice.getDisplayWidth();
+        int y = mDevice.getDisplayHeight();
         Log.e(TAG, "屏幕分辨率: " + String.valueOf(x) + " X " + String.valueOf(y));
-        mDevice.swipe((int) (x / 1.3), y / 2, x / 6, y / 2, Integer.parseInt(time));//左滑
+        mDevice.swipe((int) (x / 1.3), y / 2, x / 6, y / 2, Integer.parseInt(time));
         Log.e(TAG, "左滑");
         sleep(500);
     }
@@ -509,10 +509,10 @@ public class KeyWord {
     //向右滑动
     public static void swipeRight(String time) {
         sleep(1000);
-        int x = mDevice.getDisplayWidth();//获取屏幕的宽
-        int y = mDevice.getDisplayHeight();//获取屏幕的高
+        int x = mDevice.getDisplayWidth();
+        int y = mDevice.getDisplayHeight();
         Log.e(TAG, "屏幕分辨率: " + String.valueOf(x) + " X " + String.valueOf(y));
-        mDevice.swipe(x / 6, y / 2, (int) (x / 1.3), y / 2, Integer.parseInt(time));//右滑
+        mDevice.swipe(x / 6, y / 2, (int) (x / 1.3), y / 2, Integer.parseInt(time));
         Log.e(TAG, "右滑");
         sleep(500);
     }
@@ -520,9 +520,9 @@ public class KeyWord {
     //向下滑动
     public static void swipeDown(String time) {
         sleep(1000);
-        int x = mDevice.getDisplayWidth();//获取屏幕的宽
-        int y = mDevice.getDisplayHeight();//获取屏幕的高
-        mDevice.swipe(x / 2, y / 6, x / 2, (int) (y / 1.2), Integer.parseInt(time));//下滑
+        int x = mDevice.getDisplayWidth();
+        int y = mDevice.getDisplayHeight();
+        mDevice.swipe(x / 2, y / 6, x / 2, (int) (y / 1.2), Integer.parseInt(time));
         Log.e(TAG, "下滑");
         sleep(500);
     }
@@ -530,9 +530,9 @@ public class KeyWord {
     //向上滑动
     public static void swipeUp(String time) {
         sleep(1000);
-        int x = mDevice.getDisplayWidth();//获取屏幕的宽
-        int y = mDevice.getDisplayHeight();//获取屏幕的高
-        mDevice.swipe(x / 2, (int) (y / 1.2), x / 2, y / 6, Integer.parseInt(time));//上滑
+        int x = mDevice.getDisplayWidth();
+        int y = mDevice.getDisplayHeight();
+        mDevice.swipe(x / 2, (int) (y / 1.2), x / 2, y / 6, Integer.parseInt(time));
         Log.e(TAG, "上滑");
         sleep(500);
     }
@@ -569,7 +569,7 @@ public class KeyWord {
     public static void slideFindText(String string) throws UiObjectNotFoundException {
         UiScrollable scroll = new UiScrollable(new UiSelector().className(layout));
 //        scroll.setMaxSearchSwipes(1);//设置最大滚动次数，没有此代码则一直滚动
-        boolean text = scroll.scrollIntoView(new UiSelector().text(string));//滚动到某个对象，scrollIntoView里面的对象只能是UiObject或UiSelector
+        boolean text = scroll.scrollIntoView(new UiSelector().text(string));
         if (text) {
             Log.e(TAG, "找到了text：" + string);
             contentPass("滚动屏幕找到指定text", "slideFindText", string, "");
@@ -586,7 +586,7 @@ public class KeyWord {
     public static void slideFindId(String string) throws UiObjectNotFoundException {
         UiScrollable scroll = new UiScrollable(new UiSelector().className(layout));
 //        scroll.setMaxSearchSwipes(1);//设置最大滚动次数，没有此代码则一直滚动
-        boolean id = scroll.scrollIntoView(new UiSelector().resourceId(string));//滚动到某个对象，scrollIntoView里面的对象只能是UiObject或UiSelector
+        boolean id = scroll.scrollIntoView(new UiSelector().resourceId(string));
         if (id) {
             Log.e(TAG, "找到了id：" + string);
             contentPass("滚动屏幕找到指定id", "slideFindId", string, "");
@@ -713,7 +713,7 @@ public class KeyWord {
     //调用keyevent键值
     public static void inputKeyevent(int number) {
         sleep(2);
-        mDevice.pressKeyCode(number, 0); //metaState参数：组合键，0未激活，1caps SHIFT或CAPS_LOCK被激活，2fn ALT被激活，3caps_fn ALT,SHIFT或CAPS_LOCK同时被激活
+        mDevice.pressKeyCode(number, 0);
         Log.e(TAG, "输入键值" + number);
     }
 
@@ -761,7 +761,3 @@ public class KeyWord {
 
 
 }
-
-
-//调整代码格式command+option+L
-//替换command+R

@@ -42,8 +42,6 @@ class Case {
         monitorId("跳过", "cn.babyfs.android:id/tv_count_down");
         monitorId("不再显示", "cn.babyfs.android:id/cbDisplay");
         monitorId("关闭弹窗", "cn.babyfs.android:id/close");
-
-
     }
 
     //移除监听器
